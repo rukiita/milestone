@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクのリスト</title>
+</head>
+<body>
+    <h1>タスクのリスト</h1>
+    <th:block th:if="${tasks != null and tasks.size() > 0}">
+        <ul>
+            <th:block th:each="task : ${tasks}">
+                <li><a th:href="@{/tasks/{id}(id=${task.id})}">[[${task.title}]]</a></li>
+            </th:block>
+        </ul>
+    </th:block>
+    <th:block th:unless="${tasks != null and tasks.size() > 0}">
+        <p>現在タスクはありません</p>
+    </th:block>
+    <a href="/tasks/add">追加</a>
+</body>
+</html>

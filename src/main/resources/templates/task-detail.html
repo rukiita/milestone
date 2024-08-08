@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xlmns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>タスクの詳細ページ</h2>
+    <th:block th:if="${task!=null}">
+        <table>
+            <tr>
+                <td>タイトル</td>
+                <td>[[${task.title}]]</td>
+            </tr>
+            <tr>
+                <td>著者</td>
+                <td>[[${task.author}]]</td>
+            </tr>
+            <tr>
+                <td>分類</td>
+                <td>[[${task.classification}]]</td>
+            </tr>
+            <tr>
+                <td>期日</td>
+                <td>[[${task.dueDate}]]</td>
+            </tr>
+        </table>
+        <a th:href="@{/tasks/{id}/edit(id=${task.id})}">編集</a>
+        <a th:href="@{/tasks/{id}/delete(id=${task.id})}">削除</a>
+        <a href="/tasks">リストに戻る</a>
+    </th:block>
+    <th:block th:if="${task==null}">
+        <p>該当する書籍はありません</p>
+        <a href="/tasks">リストに戻る</a>
+    </th:block>
+</body>
+</html>

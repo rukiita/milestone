@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>タスクの編集</h1>
+    <form th:action="@{/tasks/{id}/edit(id=${id})}" method="post" th:object="${input}">
+        <input type="text" th:field="*{title}"/>
+        <input type="text" th:field="*{author}"/>
+        <input type="number" th:field="*{classification}"/>
+        <input type="date" id="dueDate" th:field="*{dueDate}"/>
+        <input type="submit" value="送信"/>
+    </form>
+</body>
+</html>

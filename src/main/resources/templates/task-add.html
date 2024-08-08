@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクの追加</title>
+</head>
+<body>
+    <h1>タスクの追加</h1>
+    <form th:action="@{/tasks/add}" method="post" th:object="${input}">
+        <input type="text" th:field="*{title}" placeholder="タイトル"/>
+        <input type="text" th:field="*{author}" placeholder="著者"/>
+        <select th:field="*{classification}">
+            <option th:each="classification : ${T(com.example.milestone.TaskClassification).values()}"
+                    th:value="${classification.name()}"
+                    th:text="${classification.toString()}">
+            </option>
+        </select>
+        <input type="date" id="dueDate" th:field="*{dueDate}"/>
+        <input type="submit" value="送信"/>
+    </form>
+</body>
+</html>
